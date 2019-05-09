@@ -1,19 +1,80 @@
 import React from 'react';
 
 class Result extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {}
-  }
   render(){
+    const { results, name} = this.props;
+    console.log('props', this.props);
+    let resultView = null;
+    if(name) {
+      resultView = name.includes('Dark') ? // weather
+          (
+            results.map((val, idx) => {
+              return (
+                <li key={idx}>
+                  {`The forecast for ${val.time} is: ${val.forecast}`}
+                </li>
+              );
+             })
+          ) :
+          name.includes('Yelp') ? // yelp
+             (
+              results.map((val, idx) => {
+                return (
+                  <li key={idx}>
+                  <a href={val.url}>{val.name}</a>
+                  <p>The average rating is {val.rating} out of 5 and the average cost is {val.price} out of 4</p>
+                  <img src={val.image_url} />
+                  </li>
+                );
+               })
+             ) :
+          name.includes('EventBrite') ? //event
+            (
+              results.map((val, idx) => {
+                return (
+                  <li key={idx}>
+                    <a href={val.link}>{val.name}</a>
+                    <p>Event Date: {val.event_date }</p>
+                    <p>{val.summary}</p>
+                  </li>
+                );
+               })
+            ) :
+          name.includes('Movie') ? // movie
+               (
+                results.map((val, idx) => {
+                  return (
+                    <li key={idx}>
+                      <p><span>{val.title}</span> was relased on {val.released_on}. Out of {val.total_votes} total votes, {val.title} has an average vote of {val.average_votes} and a popularity score of {val.popularity}.</p>
+                      <img src={val.image_url} />
+                      <p>{val.overview}</p>
+                    </li>
+                  );
+                 })
+               ) :
+          name.includes('Hiking') ? // trails
+          (
+            results.map((val, idx) => {
+              return (
+                <li key={idx}>
+                  <p><span>{val.title}</span> was relased on {val.released_on}. Out of {val.total_votes} total votes, {val.title} has an average vote of {val.average_votes} and a popularity score of {val.popularity}.</p>
+                  <img src={val.image_url} />
+                  <p>{val.overview}</p>
+                </li>
+              );
+             })
+           ) :
+           (
+            <li></li>
+           )
+
+    }
+               
     return (
       <section>
-      <h3>Results from the some API</h3>
+      <h3>Results from the {name} API</h3>
       <ul>
-        <li>We are Groot</li>
-        <li>I am Groot</li>
-        <li>We are Groot</li>
-        <li>I am Groot</li>
+       {resultView}
       </ul>
     </section>
     )
