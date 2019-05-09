@@ -1,9 +1,10 @@
 import React from 'react';
-import superagent from 'superagent';
 import Header from './header';
 import SearchForm from './search-form';
+import SearchResults from './search-results';
 import Map from './map';
 import Result from './results';
+import {makeRequests} from '../helper';
 
 /** Main Component **/
 class Main  extends React.Component {
@@ -16,16 +17,11 @@ class Main  extends React.Component {
       geoKey: ''
     }
   }
-  //handler function that makes requests
-  makeRequests = async (obj) => {
-    let reqUrl = `${obj.url}/${obj.resource}`;
-    console.log('url', reqUrl);
-    return  await superagent.get(reqUrl).query({ data: obj.data});
-  }
 
   handleLocationRequest = (obj) => {
     this.setState({ city: obj.data })
-    this.makeRequests(obj)
+    //handler function that makes requests
+    makeRequests(obj)
       .then(result => this.setState({ location: result.body }));
   }
 
@@ -68,7 +64,7 @@ class Main  extends React.Component {
       <React.Fragment>
         {form}
         <Map location={location} geoKey={geoKey}/>
-        {/* <SearchResults location={this.state.location}/> */}
+        <SearchResults location={location}  appUrl={this.state.apiURL}/>
         <Result />
       </React.Fragment>
     )
