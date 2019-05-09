@@ -8,7 +8,6 @@ class SearchForm  extends React.Component {
       value: ''
     }
   }
-  // handler for form, requests to server
   handleChange = e => {
     this.setState({value: e.target.value});
   }
