@@ -5,7 +5,6 @@ class Result extends React.Component {
     const { results, name} = this.props;
     let resultView = null;
     if(name && results.length) {
-      console.log('results', results.body);
       resultView = name.includes('Dark') ? // weather
           (
             results.map((val, idx) => {
@@ -58,7 +57,7 @@ class Result extends React.Component {
               return (
                 <li key={idx}>
                   <p><span>{val.title}</span> was relased on {val.released_on}. Out of {val.total_votes} total votes, {val.title} has an average vote of {val.average_votes} and a popularity score of {val.popularity}.</p>
-                  <img src={val.image_url}  alt={val.title}/>
+                  <img src={val.image_url}  alt={val.title} />
                   <p>{val.overview}</p>
                 </li>
               );
@@ -71,7 +70,7 @@ class Result extends React.Component {
     }
                
     return (
-      <section>
+      <section className="column-container">
       <h3>Results from the {name} API</h3>
       <ul>
        {resultView}

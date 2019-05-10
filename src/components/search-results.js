@@ -10,11 +10,14 @@ class SearchResults extends React.Component {
     const { location, appURL } = this.props;
     let results = location.id && appURL ? (
         <>
-          <DarkSky location={location}  appURL={appURL} />
-          <Yelp location={location}  appURL={appURL} />
-          <EventBrite location={location} appURL={appURL} />
-          <MovieDB location={location} appURL={appURL} />
-          {/* <Trails location={location} appURL={appURL} /> */}
+          <h2 className="query-placeholder">Here are the results for {location.formatted_query}</h2>
+          <div className="column-container">
+            <DarkSky location={location}  appURL={appURL} />
+            <Yelp location={location}  appURL={appURL} />
+            <EventBrite location={location} appURL={appURL} />
+            <MovieDB location={location} appURL={appURL} />
+            <Trails location={location} appURL={appURL} />
+          </div>
         </>
     ) : (
       <></>

@@ -19,9 +19,9 @@ class SearchForm  extends React.Component {
     const { appUrl, label } = this.props;
     return (
       <React.Fragment>
-        <form id="search-form" className="hide" onSubmit={this.handleSubmit}>
+        <form id="search-form" className={appUrl && !(label.includes("location")  || label.includes("Geocoding")) ? 'hide' : '' } onSubmit={this.handleSubmit}>
         <label htmlFor="search">{label}</label>
-        <input type="text" name="search" id="input-url-search" value={this.state.value} onChange={this.handleChange}/>
+        <input type="text" name="search" id="input-search" value={this.state.value} onChange={this.handleChange}/>
         {appUrl && label.includes("location") ? <button type="submit">Explore!</button> : ''}
         </form>
       </React.Fragment>

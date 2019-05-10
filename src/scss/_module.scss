@@ -1,0 +1,56 @@
+h1 {
+  font-size: 5vw;
+  margin-top: 3vh;
+  color: $aqua_blue;
+}
+
+h2 {
+  font-size: 2vw;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+header p, main label {
+  font-size: 1.4vw;
+  padding: $std_padding;
+  margin-top: 3vh;
+}
+
+section > p {
+  text-align: center;
+  font-style: italic;
+  margin-top: 0.3em; 
+}
+
+.column-container {
+  display: flex;
+}
+
+.column-container section {
+  display: inline-block;
+  width: $std_width;
+  border-style: groove;
+  margin: 3px;
+  background-color: $white;
+}
+.query-placeholder, form, header, h3 {
+  text-align: center;
+}
+
+form {
+  margin: 10px auto;
+}
+
+#input-search {
+  padding: 5px;
+  border: 1px solid $aqua_blue;
+}
+#map {
+  margin-top: 10px;
+  border: 2px solid $aqua_blue;
+}
+.hide {
+  display: none;
+}

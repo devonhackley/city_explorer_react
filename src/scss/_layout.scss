@@ -1,0 +1,39 @@
+button {
+  padding: $button_padding;
+  background-color:$light_orange;
+  border: 1px solid $aqua_blue;
+}
+
+img {
+  margin: auto;
+  display: block;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  line-height: $line_height;
+  text-indent: 5px;
+}
+
+li {
+  border-bottom: 2px solid $dark_grey;
+}
+section * {
+  padding: 0 2px;
+}
+
+span {
+  font-weight: bold;
+}
+
+div section:nth-child(2) img {
+  height: 75px;
+  padding-bottom: 10px;
+}
+
+/* Style the movie images */
+div section:nth-child(4) img {
+  height: 150px;
+}
