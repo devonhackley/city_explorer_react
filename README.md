@@ -15,36 +15,17 @@ npm run start
 Frontend application built with React
 
 ## Change Log
-Number and name of feature: App
+Number and name of feature: SCSS
 
-Estimate of time needed to complete: 15 mins
+Estimate of time needed to complete: 2 hours
 
 Start time: 915
-Finish time: 925
+Finish time: 1130
 
-Actual time needed to complete: 10 mins
-
------------
-
-Number and name of feature: Header
-
-Estimate of time needed to complete: 5 mins
-
-Start time: 925
-Finish time: 938
-
-Actual time needed to complete: 10 mins
+Actual time needed to complete: 2 hour 15 min
 
 -----------
 
-Number and name of feature: Main
-
-Estimate of time needed to complete: 30 mins
-
-Start time: 938
-Finish time: 1000
-
-Actual time needed to complete: 20 mins
 
 -----------
 

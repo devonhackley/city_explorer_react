@@ -3,7 +3,6 @@ import Header from './header';
 import SearchForm from './search-form';
 import SearchResults from './search-results';
 import Map from './map';
-import Result from './results';
 import {makeRequests} from '../helper';
 
 /** Main Component **/
@@ -62,9 +61,11 @@ class Main  extends React.Component {
     )
     return (
       <React.Fragment>
-        {form}
-        <Map location={location} geoKey={geoKey} />
-        <SearchResults location={location}  appURL={apiURL} />
+        <main>
+          {form}
+          <Map location={location} geoKey={geoKey} />
+          <SearchResults location={location}  appURL={apiURL} />
+        </main>
       </React.Fragment>
     )
   }
