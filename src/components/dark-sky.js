@@ -11,15 +11,27 @@ class DarkSky extends React.Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     const { location, appURL } = this.props;
-    if(location && appURL ) {
+    if(location.id && appURL ) {
       makeRequests({
         url: appURL,
         resource: 'weather',
         data: location
      })
-      .then(results => this.setState({ results }))
+      .then(results => this.setState({ results: results.body }))
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { location, appURL } = this.props;
+    if (this.props.location !== prevProps.location) {
+      makeRequests({
+        url: appURL,
+        resource: 'weather',
+        data: location
+     })
+      .then(results => this.setState({ results: results.body }))
     }
   }
   render(){
