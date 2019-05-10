@@ -18,10 +18,10 @@ class Main  extends React.Component {
     }
   }
 
-  handleLocationRequest = (obj) => {
+  handleLocationRequest = async (obj) => {
     this.setState({ city: obj.data })
     //handler function that makes requests
-    makeRequests(obj)
+     await makeRequests(obj)
       .then(result => this.setState({ location: result.body }));
   }
 
@@ -43,19 +43,19 @@ class Main  extends React.Component {
     let form = apiURL && geoKey ? (
       <SearchForm 
         handler={this.handleFormSubmit} 
-        appUrl={this.state.apiURL}
+        appUrl={apiURL}
         label="Search for a location"
       />
     ) : (
         <React.Fragment>
           <SearchForm 
             handler={this.handleFormSubmit} 
-            appUrl={this.state.apiURL}
+            appUrl={apiURL}
             label="Enter the URL to your deployed back end, making sure to remove the trailing forward slash"
           />
           <SearchForm 
             handler={this.handleFormSubmit} 
-            appUrl={this.state.apiURL}
+            appUrl={apiURL}
             label="Enter your Geocoding API Key:"
           />
         </React.Fragment>
@@ -63,9 +63,8 @@ class Main  extends React.Component {
     return (
       <React.Fragment>
         {form}
-        <Map location={location} geoKey={geoKey}/>
-        <SearchResults location={location}  appUrl={this.state.apiURL}/>
-        <Result />
+        <Map location={location} geoKey={geoKey} />
+        <SearchResults location={location}  appURL={apiURL} />
       </React.Fragment>
     )
   }

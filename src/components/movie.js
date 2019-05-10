@@ -11,6 +11,18 @@ class MovieDB extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    const { location, appURL } = this.props;
+    if (this.props.location !== prevProps.location) {
+      makeRequests({
+        url: appURL,
+        resource: 'movies',
+        data: location
+     })
+      .then(results => this.setState({ results: results.body }))
+    }
+  }
+
   componentDidMount() {
     const { location, appURL } = this.props;
     if(location && appURL ) {
@@ -19,7 +31,7 @@ class MovieDB extends React.Component {
         resource: 'movies',
         data: location
      })
-      .then(results => this.setState({ results }))
+      .then(results => this.setState({ results: results.body }))
     }
   }
   render(){

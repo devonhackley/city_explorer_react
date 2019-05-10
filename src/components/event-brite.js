@@ -11,18 +11,7 @@ class EventBrite extends React.Component {
     }
   }
 
-  // componentDidMount() {
-  //   const { location, appURL } = this.props;
-  //   if(location && appURL ) {
-  //     makeRequests({
-  //       url: appURL,
-  //       resource: 'events',
-  //       data: location
-  //    })
-  //     .then(results => this.setState({ results }))
-  //   }
-  // }
-  render(){
+  componentDidMount() {
     const { location, appURL } = this.props;
     if(location && appURL ) {
       makeRequests({
@@ -30,8 +19,22 @@ class EventBrite extends React.Component {
         resource: 'events',
         data: location
      })
-      .then(results => this.setState({ results }))
+      .then(results => this.setState({ results: results.body }))
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { location, appURL } = this.props;
+    if (this.props.location !== prevProps.location) {
+      makeRequests({
+        url: appURL,
+        resource: 'events',
+        data: location
+     })
+      .then(results => this.setState({ results: results.body }))
+    }
+  }
+  render(){
     return(
       <Result results={this.state.results}  name={'EventBrite'} />
     );

@@ -19,12 +19,25 @@ class Trails extends React.Component {
         resource: 'trails',
         data: location
      })
-      .then(results => this.setState({ results }))
+      .then(results => this.setState({ results: results.body }))
     }
   }
+
+  componentDidUpdate(prevProps) {
+    const { location, appURL } = this.props;
+    if (this.props.location !== prevProps.location) {
+      makeRequests({
+        url: appURL,
+        resource: 'trails',
+        data: location
+     })
+      .then(results => this.setState({ results: results.body }))
+    }
+  }
+
   render(){
     return(
-      <Result results={this.state.results}  name={'Hiking'} />
+      <Result results={this.state.results} name={'Hiking'} />
     );
   }
 }
